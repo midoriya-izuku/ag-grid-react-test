@@ -32,7 +32,6 @@ export function GridProvider({ children }) {
   const checkValidity = () => {
     let isValid = true;
     editableTableData.rowData.some((rowElement) => {
-      console.log(rowElement)
       for (let item in rowElement) {
         if (item !== "isError") {
           if (rowElement[item] === "") {
