@@ -44,6 +44,7 @@ export function GridProvider({ children }) {
           return true;
         }
       }
+      return false
     });
     return isValid;
   };

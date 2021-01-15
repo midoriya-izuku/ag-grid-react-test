@@ -1,17 +1,5 @@
-import React, {
-  Component,
-  forwardRef,
-  useState,
-  useRef,
-  useImperativeHandle,
-} from "react";
-import {
-  KEY_BACKSPACE,
-  KEY_DELETE,
-  isLeftOrRight,
-  deleteOrBackspace,
-  isKeyPressedNumeric,
-} from "./helpers";
+import React, { forwardRef, useState, useImperativeHandle } from "react";
+
 import DatePicker from "react-datepicker";
 import { format } from "date-fns";
 
@@ -19,7 +7,6 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default forwardRef((props, ref) => {
   const [selectedDate, setSelectedDate] = useState(null);
-  const [showDatepicker, setShowDatepicker] = useState(true);
   function handleDateChange(d) {
     setSelectedDate(d);
   }
