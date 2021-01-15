@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.ag-cell {
+  overflow: visible !important;
+  padding: 0px !important;
+}
+
+.ag-row-focus {
+  z-index: 1;
+}
+
+.ag-center-cols-viewport,
+.ag-center-cols-clipper,
+.ag-layout-normal {
+  overflow: visible !important;
+}

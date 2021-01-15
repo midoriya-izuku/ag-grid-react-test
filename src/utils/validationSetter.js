@@ -25,7 +25,7 @@ const onSuccess = (params) => () => {
   data[field] = params.newValue;
   data.isError = {
     ...data.isError,
-    [field]: { value: false, errMsg: {} },
+    [field]: { value: false, errMsg: {}, cellEdited: true },
   };
   params.api.applyTransaction({ update: [data] });
 };
@@ -36,7 +36,7 @@ const onFail = (params, errMsg) => () => {
   data[field] = params.newValue;
   data.isError = {
     ...data.isError,
-    [field]: { value: true, errMsg },
+    [field]: { value: true, errMsg, cellEdited: true },
   };
   params.api.applyTransaction({ update: [data] });
 };

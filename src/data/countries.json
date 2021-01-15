@@ -1,1 +1,5 @@
-{"indonesia":["dublin","ireland","mumbai"],"malaysia":["mal","malu","new york"],"china":["xian","jin","qing"]}
+{
+  "Australia": ["Perth", "Sydney", "Melbourne"],
+  "UK": ["London", "Manchester", "Birmingham"],
+  "USA": ["New York", "Chicago", "San Francisco"]
+}
