@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Codalyze Fe Assignment
+
+To checkout the live build go to https://ag-grid-react-test-ey8hkq69w.vercel.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
