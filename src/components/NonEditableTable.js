@@ -2,7 +2,7 @@ import React from "react";
 import { useGrid } from "../contexts/GridContext";
 import { AgGridReact } from "ag-grid-react";
 const NonEditableTable = () => {
-  let { setSavedTableGrid, savedTableData } = useGrid();
+  let { setNonEditableGrid, nonEditableTableData } = useGrid();
   return (
     <>
        <div className="ag-theme-balham"
@@ -12,9 +12,9 @@ const NonEditableTable = () => {
           margin: '10px 20px'
         }}>
         <AgGridReact
-            onGridReady = {(params)=>{setSavedTableGrid(params.api)}}
-            columnDefs={savedTableData.columnDefs}
-            rowData={savedTableData.rowData}
+            onGridReady = {(params)=>{setNonEditableGrid(params.api)}}
+            columnDefs={nonEditableTableData.columnDefs}
+            rowData={nonEditableTableData.rowData}
             enableBrowserTooltips = {true} defaultColDef =  {{
               flex: 1,
               minWidth: 110,

@@ -12,20 +12,20 @@ export function GridProvider({ children }) {
     columnDefs: editableTable.columnDefs,
     rowData: [],
   });
-  const [savedTableData, setSavedTableData] = useState({
+  const [nonEditableTableData, setNonEditableTableData] = useState({
     columnDefs: nonEditableTable.columnDefs,
     rowData: [],
   });
   const [editableGridApi, setEditableGridApi] = useState();
-  const [savedGridApi, setSavedGridApi] = useState();
+  const [nonEditableGridpApi, setNonEditableGridApi] = useState();
   const [submitted, setSubmitted] = useState(false);
 
-  const setEditableTableGrid = (gridApi) => {
+  const setEditableGrid = (gridApi) => {
     setEditableGridApi(gridApi);
   };
 
-  const setSavedTableGrid = (gridApi) => {
-    setSavedGridApi(gridApi);
+  const setNonEditableGrid = (gridApi) => {
+    setNonEditableGridApi(gridApi);
   };
 
   //check to see if the values in the table rows are valid
@@ -70,7 +70,6 @@ export function GridProvider({ children }) {
   const removeRow = (rowIndex) => {
     let newRowData = editableTableData.rowData;
     newRowData.splice(rowIndex, 1);
-    console.log(newRowData);
     setEditableTableData({ ...editableTableData, rowData: newRowData });
     editableGridApi.setRowData(editableTableData.rowData);
   };
@@ -78,9 +77,12 @@ export function GridProvider({ children }) {
   //remove all the selected rows
   const removeSelected = () => {
     let selectedRows = [];
+    //get the indexes of row which are selected
     editableGridApi
       ?.getSelectedNodes()
       .forEach((rowValue) => selectedRows.push(rowValue.rowIndex));
+
+    //remove those indexes
     let editedData = editableTableData.rowData.filter((rowItem, index) => {
       if (selectedRows.includes(index)) {
         return false;
@@ -88,15 +90,20 @@ export function GridProvider({ children }) {
         return true;
       }
     });
+    setEditableTableData({ ...editableTableData, rowData: editedData });
     editableGridApi?.setRowData(editedData);
   };
 
   //remove all the non selected rows
   const removeNonSelected = () => {
     let selectedRows = [];
+
+    //get indexes of row which are selected
     editableGridApi
       ?.getSelectedNodes()
       .forEach((rowValue) => selectedRows.push(rowValue.rowIndex));
+
+    //remove row which are not selected
     let editedData = editableTableData.rowData.filter((rowItem, index) => {
       if (selectedRows.includes(index)) {
         return true;
@@ -104,7 +111,8 @@ export function GridProvider({ children }) {
         return false;
       }
     });
-    editableGridApi?.setRowData(editedData);
+    setEditableTableData({ ...editableTableData, rowData: editedData });
+    editableGridApi.setRowData(editedData);
   };
 
   //saved table row data to storage if there are no error
@@ -113,7 +121,9 @@ export function GridProvider({ children }) {
     let isValid = checkValidity();
     if (isValid) {
       storeData("table", JSON.stringify(editableTableData.rowData));
-      savedGridApi?.setRowData(editableTableData.rowData);
+      editableGridApi?.setRowData(editableTableData.rowData);
+      nonEditableGridpApi?.setRowData(editableTableData.rowData);
+      alert("submitted")
     } else {
       alert("check for errors");
     }
@@ -124,13 +134,18 @@ export function GridProvider({ children }) {
     let storedTableData = JSON.parse(getStoredData("table"));
     if (storedTableData) {
       setEditableTableData({ ...editableTableData, rowData: storedTableData });
-      setSavedTableData({ ...savedTableData, rowData: storedTableData });
-    } else {
+      setNonEditableTableData({
+        ...nonEditableTableData,
+        rowData: storedTableData,
+      });
+    }
+    //if there is no stored table set the predefined table value 
+    else {
       setEditableTableData({
         ...editableTableData,
         rowData: editableTable.rowData,
       });
-      setSavedTableData({ ...savedTableData, rowData: [] });
+      setNonEditableTableData({ ...nonEditableTableData, rowData: [] });
     }
   };
 
@@ -141,10 +156,10 @@ export function GridProvider({ children }) {
 
   const value = {
     editableTableData,
-    savedTableData,
+    nonEditableTableData,
     submitted,
-    setEditableTableGrid,
-    setSavedTableGrid,
+    setEditableGrid,
+    setNonEditableGrid,
     submitGrid,
     removeSelected,
     removeNonSelected,
