@@ -56,6 +56,7 @@ export function GridProvider({ children }) {
       id: "",
       name: "",
       email: "",
+      gender:"",
       country: "",
       city: "",
       date: "",

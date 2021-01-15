@@ -7,17 +7,15 @@ import {
 
 export const editableTable = {
   columnDefs: [
+    {headerName:"",
+  checkboxSelection:true},
     {
       headerName: "Id",
       field: "id",
-      onCellClicked: (params) => {
-        return true;
-      },
       cellRenderer: "fieldComponent",
       cellRendererParams: {
         placeholder: "Id",
       },
-      checkboxSelection: true,
       valueSetter: validationSetter(),
     },
     {
@@ -40,6 +38,18 @@ export const editableTable = {
         placeholder: "Email",
       },
       valueSetter: validationSetter(emailValidation, "email invalid"),
+    },
+    {
+      headerName: "Gender",
+      field: "gender",
+      cellRenderer: "fieldComponent",
+      cellRendererParams: {
+        placeholder: "Gender",
+      },
+      cellEditor: "agSelectCellEditor",
+      cellEditorParams: {
+        values: ['Male', 'Female', 'Other']
+      },
     },
     {
       headerName: "Country",
@@ -93,6 +103,7 @@ export const editableTable = {
       id: "1",
       name: "sam",
       email: "sam@gmail.com",
+      gender:"Male",
       date: "20/01/2021",
       country: "Australia",
       city: "Melbourne",
@@ -102,6 +113,7 @@ export const editableTable = {
       id: "2",
       name: "sam2",
       email: "sam2@gmail.com",
+      gender:"Female",
       date: "20/01/2021",
       country: "UK",
       city: "London",
@@ -111,6 +123,7 @@ export const editableTable = {
       id: "3",
       name: "sam3",
       email: "sam3@gmail.com",
+      gender:"Female",
       date: "20/01/2021",
       country: "USA",
       city: "Chicago",
