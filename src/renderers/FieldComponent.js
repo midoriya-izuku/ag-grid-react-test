@@ -35,7 +35,7 @@ const FieldComponent = ({ value, colDef, data, placeholder }) => {
     }
   } else if (
     (value?.length === 0 && data.isError[colDef.field]?.cellEdited) ||
-    (value?.length === 0 && submitted)
+    ((value == undefined || value?.length === 0) && submitted)
   ) {
     //if cell value is empty and has cell has been edited display error
     //or if cell value has not been edited but user tried to submit the cell with empty value display error

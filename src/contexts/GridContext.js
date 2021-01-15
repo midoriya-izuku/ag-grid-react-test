@@ -32,6 +32,7 @@ export function GridProvider({ children }) {
   const checkValidity = () => {
     let isValid = true;
     editableTableData.rowData.some((rowElement) => {
+      console.log(rowElement)
       for (let item in rowElement) {
         if (item !== "isError") {
           if (rowElement[item] === "") {
@@ -44,7 +45,6 @@ export function GridProvider({ children }) {
           return true;
         }
       }
-      return false
     });
     return isValid;
   };
@@ -121,6 +121,7 @@ export function GridProvider({ children }) {
   const submitGrid = () => {
     setSubmitted(true);
     let isValid = checkValidity();
+    console.log(isValid)
     if (isValid) {
       storeData("table", JSON.stringify(editableTableData.rowData));
       editableGridApi?.setRowData(editableTableData.rowData);
