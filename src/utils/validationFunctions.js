@@ -4,4 +4,4 @@ export const emailValidation = (email) => {
 };
 
 export const checkCharacterCounter = (value) =>
-  value.length > 0 && value.length > 2;
+  value?.length > 0 && value.length > 2;

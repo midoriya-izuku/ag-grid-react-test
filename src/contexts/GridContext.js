@@ -18,6 +18,7 @@ export function GridProvider({ children }) {
   });
   const [editableGridApi, setEditableGridApi] = useState();
   const [savedGridApi, setSavedGridApi] = useState();
+  const [submitted, setSubmitted] = useState(false);
 
   const setEditableTableGrid = (gridApi) => {
     setEditableGridApi(gridApi);
@@ -43,13 +44,13 @@ export function GridProvider({ children }) {
           return true;
         }
       }
-      return true
     });
     return isValid;
   };
 
   //add new row to grid
   const addNewRow = () => {
+    setSubmitted(false);
     let newRow = {
       id: "",
       name: "",
@@ -108,10 +109,11 @@ export function GridProvider({ children }) {
 
   //saved table row data to storage if there are no error
   const submitGrid = () => {
+    setSubmitted(true);
     let isValid = checkValidity();
     if (isValid) {
       storeData("table", JSON.stringify(editableTableData.rowData));
-      savedGridApi.setRowData(editableTableData.rowData)
+      savedGridApi?.setRowData(editableTableData.rowData);
     } else {
       alert("check for errors");
     }
@@ -140,6 +142,7 @@ export function GridProvider({ children }) {
   const value = {
     editableTableData,
     savedTableData,
+    submitted,
     setEditableTableGrid,
     setSavedTableGrid,
     submitGrid,

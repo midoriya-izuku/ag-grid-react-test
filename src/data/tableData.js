@@ -1,10 +1,9 @@
-import countriesData from "./countries.json";
+import countries from "./countries.json";
 import { validationSetter } from "../utils/validationSetter";
 import {
   emailValidation,
   checkCharacterCounter,
 } from "../utils/validationFunctions";
-let countries = JSON.parse(countriesData);
 
 export const editableTable = {
   columnDefs: [
@@ -38,7 +37,7 @@ export const editableTable = {
       field: "email",
       cellRenderer: "fieldComponent",
       cellRendererParams: {
-        placeholder: "Name",
+        placeholder: "Email",
       },
       valueSetter: validationSetter(emailValidation, "email invalid"),
     },
@@ -51,7 +50,7 @@ export const editableTable = {
       },
       cellEditor: "agSelectCellEditor",
       cellEditorParams: {
-        values: ["indonesia", "china", "malaysia"],
+        values: Object.keys(countries),
       },
     },
     {
@@ -95,8 +94,8 @@ export const editableTable = {
       name: "sam",
       email: "sam@gmail.com",
       date: "20/01/2021",
-      country: "",
-      city: "",
+      country: "Australia",
+      city: "Melbourne",
       isError: {},
     },
     {
@@ -104,8 +103,8 @@ export const editableTable = {
       name: "sam2",
       email: "sam2@gmail.com",
       date: "20/01/2021",
-      country: "",
-      city: "",
+      country: "UK",
+      city: "London",
       isError: {},
     },
     {
@@ -113,8 +112,8 @@ export const editableTable = {
       name: "sam3",
       email: "sam3@gmail.com",
       date: "20/01/2021",
-      country: "",
-      city: "",
+      country: "USA",
+      city: "Chicago",
       isError: {},
     },
   ],
