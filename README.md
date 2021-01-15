@@ -1,4 +1,4 @@
-# Codalyze Fe Assignment
+# Fe Assignment
 
 To checkout the live build go to https://ag-grid-react-test-ey8hkq69w.vercel.app/
 
