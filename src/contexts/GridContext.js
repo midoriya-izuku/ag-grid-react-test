@@ -120,7 +120,6 @@ export function GridProvider({ children }) {
   const submitGrid = () => {
     setSubmitted(true);
     let isValid = checkValidity();
-    console.log(isValid)
     if (isValid) {
       storeData("table", JSON.stringify(editableTableData.rowData));
       editableGridApi?.setRowData(editableTableData.rowData);
