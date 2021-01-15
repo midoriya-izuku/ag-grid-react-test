@@ -147,6 +147,10 @@ export const nonEditableTable = {
       field: "email",
     },
     {
+      headerName: "Gender",
+      field: "gender",
+    },
+    {
       headerName: "Country",
       field: "country",
     },
