@@ -1,3 +1,4 @@
+//validation setter if validation function fails call on fail or call On success
 export const validationSetter = (
   validateFn = (value) => true,
   errMsg = false
@@ -19,6 +20,8 @@ const syncValidator = (newValue, validateFn, onSuccess, onFail) => {
   }
 };
 
+//each field is key in isError object 
+//set is error field key value if validation function passes
 const onSuccess = (params) => () => {
   let data = params.data;
   let field = params.colDef.field;
@@ -30,6 +33,7 @@ const onSuccess = (params) => () => {
   params.api.applyTransaction({ update: [data] });
 };
 
+//set is error field key value false if validation function fails
 const onFail = (params, errMsg) => () => {
   let data = params.data;
   let field = params.colDef.field;

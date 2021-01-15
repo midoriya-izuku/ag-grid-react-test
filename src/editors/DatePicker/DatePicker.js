@@ -19,6 +19,7 @@ export default forwardRef((props, ref) => {
       getValue: () => {
         let dateString = null;
         if (selectedDate) {
+          //format date value to display date from string
           dateString = format(selectedDate, "dd/MM/yyyy");
         }
         return dateString;
