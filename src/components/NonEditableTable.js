@@ -5,10 +5,11 @@ const NonEditableTable = () => {
   let { setNonEditableGrid, nonEditableTableData } = useGrid();
   return (
     <>
+      <h4>Submitted Data</h4>
        <div className="ag-theme-balham"
         style={{
           height: '500px',
-          width: '100%',
+          width: '95%',
           margin: '10px 20px'
         }}>
         <AgGridReact

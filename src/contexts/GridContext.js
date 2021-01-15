@@ -34,7 +34,7 @@ export function GridProvider({ children }) {
     editableTableData.rowData.some((rowElement) => {
       for (let item in rowElement) {
         if (item !== "isError") {
-          if (rowElement[item] === "") {
+          if (rowElement[item] === "" || rowElement[item] === undefined) {
             isValid = false;
             return true;
           }

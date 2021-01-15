@@ -158,5 +158,9 @@ export const nonEditableTable = {
       headerName: "City",
       field: "city",
     },
+    {
+      headerName: "Date",
+      field: "date",
+    },    
   ],
 };
