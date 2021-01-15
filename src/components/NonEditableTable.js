@@ -20,8 +20,9 @@ const NonEditableTable = () => {
               flex: 1,
               minWidth: 110,
               filter:true,
-              editable: true,
+              editable: false,
               resizable: true,}}
+            
           ></AgGridReact>
         </div> 
     </>
